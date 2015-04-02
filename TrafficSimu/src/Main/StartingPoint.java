@@ -1,27 +1,36 @@
 package Main;
 
-import Element.Data;
-import Element.Model;
-import Element.Modeler;
+import Element.*;
 import Utility.UIForm;
+
+/**
+ * 
+ * Main class that collects data from user. Trigger the simulation and show all menus to user.
+ * 
+ * @author pichan vasantakitkumjorn
+ */
 
 final class StartingPoint {
 	
-	private final MenuMessage MESSAGE = new MenuMessage();
-	private boolean isRun = false;
-	private final UIForm _menu;
-	private final Data value;
+	private final MenuMessage MESSAGE = new MenuMessage(); // Message for menu.
+	private boolean isRun = false; // Flowing control.
+	private final UIForm _menu; // Menu
+	private final Data value; // All data for element in simulation.
 	
+	//Constructor
 	StartingPoint(){
 		_menu = new UIForm();
 		value = new Data();
 	}
-	
+	/**
+	 * Start running program.
+	 */
 	void run(){
+		//Setup all messages for all menus.
 		final String mainMessage = MESSAGE.getMainMenuMessage();
 		final String subMessage  = MESSAGE.getSubMenuMessage();
 		final String exitMessage = MESSAGE.getExitMenuMessage();
-		
+		//Start showing the menu until user terminates program.
 		do{
 			String result = _menu.inputBox(mainMessage);
 			 try {
@@ -55,7 +64,11 @@ final class StartingPoint {
 		}while(!isRun);
 	}
 
-
+	/**
+	 * Run sub menu for set up value.
+	 * 
+	 * @param message
+	 */
 	private void runSubMenu(String message) {
 		boolean isRun = false;
 		do{
@@ -128,9 +141,16 @@ final class StartingPoint {
 		}while(!isRun);	
 	}
 	
+	/**
+	 * 
+	 * Method that shows menu for collecting Integer values from a user.
+	 * 
+	 * @param message
+	 * @return int 
+	 */
 	private int setupMenu(String message){
 		int retval;
-		UIForm menu = new UIForm();
+		UIForm menu = new UIForm(); // The form that receives input from user.
 		
 		while(true){
 			try{
@@ -146,7 +166,13 @@ final class StartingPoint {
 			}
 		}	
 	}
-	
+	/**
+	 * 
+	 * Method that shows menu for collecting Double values from a user.
+	 * 
+	 * @param message
+	 * @return int 
+	 */
 	private double setupMenu(String message,int min, int max){
 		double retval;
 		UIForm menu = new UIForm();

@@ -1,5 +1,11 @@
 package Main;
 
+/**
+ * Entry Point of Traffic simulation program.
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
 
 public class Main {
 
