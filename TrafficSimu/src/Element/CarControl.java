@@ -1,5 +1,8 @@
 package Element;
 
+import ielement.Agent;
+import ielement.Control;
+
 final class CarControl implements Agent{
 
 	private final Control center;

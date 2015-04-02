@@ -1,5 +1,8 @@
 package Element;
 
+import ielement.Agent;
+import ielement.Model;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;

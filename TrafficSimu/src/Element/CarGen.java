@@ -1,5 +1,8 @@
 package Element;
 
+import ielement.Agent;
+import ielement.Car;
+
 final class CarGen implements Agent{
 
 	private Car_Component car_info;

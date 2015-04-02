@@ -1,5 +1,7 @@
 package Element;
 
+import ielement.Model;
+
 
 public class Modeler {
 	

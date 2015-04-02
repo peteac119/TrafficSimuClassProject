@@ -1,5 +1,7 @@
 package Element;
 
+import ielement.Model;
+
 final class ModelFactory {
 	private ModelFactory(){}
 	

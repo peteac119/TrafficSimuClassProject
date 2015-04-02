@@ -1,5 +1,7 @@
 package Element;
 
+import ielement.Car;
+
 import java.awt.Color;
 
 final class Alter_Car implements Car{

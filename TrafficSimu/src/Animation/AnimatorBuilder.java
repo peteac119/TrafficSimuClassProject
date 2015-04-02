@@ -4,7 +4,7 @@ import Element.Coodinate;
 import Element.Light;
 import Element.Road;
 
-public class AnimatorBuilder {
+public final class AnimatorBuilder {
 	
 	private final Simulation simu = new Simulation();
 	
