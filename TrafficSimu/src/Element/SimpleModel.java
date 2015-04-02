@@ -10,7 +10,13 @@ import java.util.Observable;
 import Animation.Animator;
 import Animation.AnimatorBuilder;
 
-
+/**
+ * 
+ * This class generates a simple model simulation.
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
 final class SimpleModel extends Observable implements Model{
 
 	private final AnimatorBuilder builder = new AnimatorBuilder();
@@ -25,7 +31,7 @@ final class SimpleModel extends Observable implements Model{
 	private final int LENGTH = 150;
 	private final int SIMPLE = 2;
 	private final int runtime;
-	
+	//Constructor
 	SimpleModel(Car_Component car_info, Light_Component light_info, Model_Component model_info) {
 		this.light = new Light[model_info.getColumn()][model_info.getRow()];
 		this.runtime = model_info.getRuntime();
@@ -36,7 +42,9 @@ final class SimpleModel extends Observable implements Model{
 		animator = builder.getAnimator();
 		super.addObserver(animator);
 	}
-	
+	/**
+	 * Start running simulation based on running time.
+	 */
 	public void start() {
 		for (int i=0; i < runtime; i++) {
 			
@@ -49,13 +57,22 @@ final class SimpleModel extends Observable implements Model{
 		}
 		animator.dispose();
 	}
-	
+	/**
+	 * Create all element for simulation.
+	 * 
+	 * @param row
+	 * @param column
+	 */
 	private void build(int row, int column){
 		buildLight(row,column);
 		buildVerRoad(row,column);
 		buildHoriRoad(row,column);
 	}
-
+	/**
+	 * Create horizontal road.
+	 * @param row
+	 * @param column
+	 */
 	private void buildHoriRoad(int row, int column) {
 		int x_coor = 0;
 		int y_coor = 150;
@@ -86,7 +103,11 @@ final class SimpleModel extends Observable implements Model{
 			y_coor = y_coor + 160;
 		}
 	}
-
+	/**
+	 * Create vertical road.
+	 * @param row
+	 * @param column
+	 */
 	private void buildVerRoad(int row, int column) {
 		int x_coor = 150;
 		int y_coor = 0;
@@ -114,7 +135,11 @@ final class SimpleModel extends Observable implements Model{
 			x_coor = x_coor + 160;
 		}
 	}
-
+	/**
+	 * Set all light positions.
+	 * @param row
+	 * @param column
+	 */
 	private void buildLight(int row,int column) {
 		int x_coor = 150;
 		int y_coor = 0;

@@ -4,6 +4,7 @@ import ielement.Car;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,13 +18,21 @@ import Element.Coodinate;
 import Element.Road;
 import Element.Light;
 
+/**
+ * 
+ * This class will manage, generate and show the traffic simulation on the screen. 
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
+
 final class Simulation implements Animator{
 	
 	private final List<Element<Road>> road = new ArrayList<Element<Road>>();
 	private final List<Element<Light>> light = new ArrayList<Element<Light>>();
 	private final Painter paint = new Painter();
 	private final JFrame frame = new JFrame();
-	
+	//Constructor
 	Simulation(){
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
@@ -35,19 +44,31 @@ final class Simulation implements Animator{
 			}
 		});
 	}
-	
+	/**
+	 * Add road element.
+	 * @param road
+	 * @param coor
+	 */
 	void addRoad(Road road, Coodinate coor){
 		this.road.add(new Element<Road>(road,coor));
 	}
-	
+	/**
+	 * Add light element.
+	 * @param light
+	 * @param coor
+	 */
 	void addLight(Light light, Coodinate coor){
 		this.light.add(new Element<Light>(light,coor));
 	}
-
+	/**
+	 * Terminate simulator.
+	 */
 	public void dispose() {
 		frame.dispose();
 	}
-	
+	/**
+	 * For Observer class to update all element in the simulation.
+	 */
 	public void update(final Observable model, Object ignored) {
 		//This method will put run() to other Thread, but it still can work with the main Thread.  
 		SwingUtilities.invokeLater(new Runnable(){
@@ -64,7 +85,12 @@ final class Simulation implements Animator{
 		
 		
 	}
-	
+	/**
+	 * Inner class that wraps all elements into one type.
+	 * @author pete
+	 *
+	 * @param <Type>
+	 */
 	private class Element<Type>{
 		
 		private final Type data;
@@ -75,7 +101,13 @@ final class Simulation implements Animator{
 			this.coor = coor;
 		}
 	}
-	
+	/**
+	 * 
+	 * The class that draws all elements on the frame.
+	 * 
+	 * @author pichan vasantakitkumjorn.
+	 *
+	 */
 	private class Painter extends JPanel{
 		
 		private static final long serialVersionUID = 1L;

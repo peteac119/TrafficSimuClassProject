@@ -2,6 +2,13 @@ package ielement;
 
 import java.awt.Color;
 
+/**
+ * Interface for car element.
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
+
 public interface Car {
 	
 	void set_position(int position);

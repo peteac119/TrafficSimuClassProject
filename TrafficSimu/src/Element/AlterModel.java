@@ -10,6 +10,13 @@ import java.util.Observable;
 import Animation.Animator;
 import Animation.AnimatorBuilder;
 
+/**
+ * 
+ * This class generates a alternative model simulation.
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
 
 final class AlterModel extends Observable implements Model{
 
@@ -26,7 +33,7 @@ final class AlterModel extends Observable implements Model{
 	private final int SIMPLE = 2;
 	private final int ALTER = 1;
 	private final int runtime;
-	
+	//Constructor
 	AlterModel(Car_Component car_info, Light_Component light_info, Model_Component model_info) {
 		this.light = new Light[model_info.getColumn()][model_info.getRow()];
 		this.runtime = model_info.getRuntime();
@@ -37,7 +44,9 @@ final class AlterModel extends Observable implements Model{
 		animator = builder.getAnimator();
 		super.addObserver(animator);
 	}
-	
+	/**
+	 * Start running simulation based on running time.
+	 */
 	public void start() {
 		for (int i=0; i < runtime; i++) {
 			
@@ -49,13 +58,22 @@ final class AlterModel extends Observable implements Model{
 		}
 		animator.dispose();
 	}
-	
+	/**
+	 * Create all element for simulation.
+	 * 
+	 * @param row
+	 * @param column
+	 */
 	private void build(int row, int column){
 		build_Light(row,column);
 		buildVerRoad(row,column);
 		buildHoriRoad(row,column);
 	}
-
+	/**
+	 * Create horizontal road.
+	 * @param row
+	 * @param column
+	 */
 	private void buildHoriRoad(int row, int column) {
 		int x_coor = 0;
 		int y_coor = 150;
@@ -103,7 +121,11 @@ final class AlterModel extends Observable implements Model{
 		}
 		
 	}
-
+	/**
+	 * Create vertical road.
+	 * @param row
+	 * @param column
+	 */
 	private void buildVerRoad(int row, int column) {
 		int x_coor = 150;
 		int y_coor = 0;
@@ -150,7 +172,11 @@ final class AlterModel extends Observable implements Model{
 		}
 		
 	}
-
+	/**
+	 * Set all light positions.
+	 * @param row
+	 * @param column
+	 */
 	private void build_Light(int row, int column){
 		int x_coor = 150;
 		int y_coor = 0;

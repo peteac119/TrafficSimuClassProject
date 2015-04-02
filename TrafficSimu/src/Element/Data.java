@@ -1,5 +1,12 @@
 package Element;
 
+/**
+ * 
+ * All variables in this class will be used in simulation.
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
 public class Data {
 		
 		private double runtime = 60.0; 
@@ -22,20 +29,30 @@ public class Data {
 		private double min_red = 5.0;
 		private double max_red = 10.0;
 		
-	
+		/**
+		 * Set up running time in seconds.
+		 * @param time
+		 */
 		public void set_runtime(double time) {
 			if (time < 0)
 				throw new IllegalArgumentException();
 			runtime = time;
 		}
-	
+		/**
+		 * Set up row and column of the road.
+		 * @param row
+		 * @param column
+		 */
 		public void set_grid(int row, int column) {
 			if (row <= 0 || column <= 0)
 				throw new IllegalArgumentException();
 			this.row = row;
 			this.column = column;
 		}
-		
+		/**
+		 * Set uo the pattern of model in simulation.
+		 * @param k
+		 */
 		public void set_pattern(int k) {
 			if (k <= 0 || k > 2)
 				throw new IllegalArgumentException();
@@ -47,7 +64,12 @@ public class Data {
 				traffic_type = "simple";
 			}
 		}
-		
+		/**
+		 * Set up car generation time.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_car_gen(double min, double max) {
 			if (min <= 0 || max <= 0 || max < min
 				|| min > 5 || max > 5)
@@ -56,7 +78,12 @@ public class Data {
 			max_car_gen = max;
 		}
 		
-		
+		/**
+		 * Set car length.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_car_length(double min, double max) {
 			if (min < 5 || max < 5 || max < min
 				|| min > 15 || max > 15	)
@@ -64,7 +91,12 @@ public class Data {
 			min_car_length = min;
 			max_car_length = max;
 		}
-		
+		/**
+		 * Set car speed.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_car_velo(double min, double max) {
 			if (min < 10  || max <  10 || max < min
 				|| min > 100 || max > 100)
@@ -72,7 +104,12 @@ public class Data {
 			min_velo = min;
 			max_velo = max;
 		}
-		
+		/**
+		 * Set distance for a car to slow down.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_car_slow(double min, double max) {
 			if (min < 5 || max < 5 || max < min
 				|| min > 10 || max > 10)
@@ -80,7 +117,12 @@ public class Data {
 			min_slow = min;
 			max_slow = max;	
 		}
-		
+		/**
+		 * Set distance for a car to stop.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_car_brake(double min, double max) {
 			if (min <= 0 || max <= 0 || max < min
 				|| min > 4 || max > 4) 
@@ -88,7 +130,12 @@ public class Data {
 			min_brake = min;
 			max_brake = max;	
 		}
-		
+		/**
+		 * Set up interval time for green light.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_greentime(double min, double max) {
 			if (min <= 0 || max <= 0 || max < min
 				|| min > 10 || max > 10	)
@@ -96,7 +143,12 @@ public class Data {
 			min_green = min;
 			max_green = max;
 		}
-		
+		/**
+		 * Set up interval time for red light.
+		 * 
+		 * @param min
+		 * @param max
+		 */
 		public void set_redtime(double min, double max) {
 			if (min <= 0 || max <= 0 || max < min
 				|| min > 10 || max > 10 )
@@ -104,7 +156,9 @@ public class Data {
 			min_red = min;
 			max_red = max;
 		}
-		
+		/**
+		 * Reset all values back to default values.
+		 */
 		public void reset() {
 			runtime = 60.0; 
 			row = 2;
@@ -126,7 +180,7 @@ public class Data {
 			min_red = 5.0;
 			max_red = 10.0;
 		}
-		
+		@Override
 		public String toString(){
 			StringBuilder print = new StringBuilder();
 			print.append("Simulation run time (seconds)		[" + runtime + "]\n");
@@ -141,77 +195,148 @@ public class Data {
 			print.append("Traffic light red time (seconds)	[min=" + min_red + ",max="+ max_red + "]\n");
 			return print.toString();
 		}
-		
+		/**
+		 * Get running time.
+		 * @return double
+		 */
 		double get_runtime() {
 			return runtime;
 		}
-		
+		/**
+		 * Get number of rows.
+		 * 
+		 * @return int
+		 */
 		int get_row() {
 			return row;
 		}
-		
+		/**
+		 * Get number of column.
+		 * 
+		 * @return int
+		 */
 		int get_column() {
 			return column;
 		}
-		
+		/**
+		 * Get pattern of model.
+		 * 
+		 * @return int
+		 */
 		int get_pattern() {
 			return pattern;
 		}
-		
+		/**
+		 * Get minimum car length.
+		 * 
+		 * @return double
+		 */
 		double get_min_carlength(){
 			return min_car_length;
 		}
-		
+		/**
+		 * Get maximum car length.
+		 * 
+		 * @return double
+		 */
 		double get_max_carlength(){
 			return max_car_length;
 		}
-		
+		/**
+		 * Get minimum interval time for car generation.
+		 * 
+		 * @return double
+		 */
 		double get_min_cargendelay(){
 			return min_car_gen;
 		}
-		
+		/**
+		 * Get maximum interval time for car generation.
+		 * 
+		 * @return double
+		 */
 		double get_max_cargendelay(){
 			return max_car_gen;
 		}
-		
+		/**
+		 * Get minimum speed of car.
+		 * 
+		 * @return double
+		 */
 		double get_min_velo(){
 			double minvelo = min_velo / 10;
 			return minvelo;
 		}
-		
+		/**
+		 * Get maximum speed of car.
+		 * 
+		 * @return double
+		 */
 		double get_max_velo(){
 			double maxvelo = max_velo/10;
 			return maxvelo;
 		}
-		
+		/**
+		 * Get minimum distance of car for slowing down.
+		 * 
+		 * @return double
+		 */
 		double get_min_slowdis(){
 			return min_slow;
 		}
-		
+		/**
+		 * Get maximum distance of car for slowing down.
+		 * 
+		 * @return double
+		 */
 		double get_max_slowdis(){
 			return max_slow;
 		}
-		
+		/**
+		 * Get minimum distance of car for brake.
+		 * 
+		 * @return double
+		 */
 		double get_min_brakedis(){
 			return min_brake;
 		}
-		
+		/**
+		 * Get maximum distance of car for brake.
+		 * 
+		 * @return double
+		 */
 		double get_max_brakedis(){
 			return max_brake;
 		}
-		
+		/**
+		 * Get minimum interval time for green light.
+		 * 
+		 * @return double
+		 */
 		double get_min_greentime(){
 			return min_green;
 		}
-		
+		/**
+		 * Get maximum interval time for green light.
+		 * 
+		 * @return double
+		 */
 		double get_max_greentime(){
 			return max_green;
 		}
-		
+		/**
+		 * Get minimum interval time for red light.
+		 * 
+		 * @return double
+		 */
 		double get_min_redtime(){
 			return min_red;
 		}
-		
+		/**
+		 * Get maximum interval time for red light.
+		 * 
+		 * @return double
+		 */
 		double get_max_redtime(){
 			return max_red;
 		}

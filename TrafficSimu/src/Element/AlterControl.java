@@ -6,7 +6,12 @@ import ielement.Control;
 import java.awt.Color;
 import java.util.Iterator;
 
-
+/**
+ * The controller car for alternative model.
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
 
 final class AlterControl implements Control{
 	
@@ -20,7 +25,7 @@ final class AlterControl implements Control{
 	private int light_rank = 0;
 	private int road_rank = 0;
 	
-	
+	//Constructor
 	AlterControl(int num_light, int num_road, Car_Component car_info){
 		this.light = new Light[num_light];
 		this.road = new Road[num_road];
@@ -31,7 +36,9 @@ final class AlterControl implements Control{
 		SLOW = car_info.getSlowDistance();
 		BRAKE = car_info.getBrakeDistance();
 	}
-	
+	/**
+	 * Start controlling.
+	 */
 	public void execute() {
 		for(Road r : road){
 			Iterator<Car> car = r.get_Car();
@@ -43,7 +50,10 @@ final class AlterControl implements Control{
 		}
 		Sink(road[0]);
 	}
-
+	/**
+	 * Prevent all car collisions.
+	 * @param car
+	 */
 	private void CheckCollision(Iterator<Car> car) {
 			Car frontcar = car.next();
 			frontcar.drive();
@@ -65,7 +75,10 @@ final class AlterControl implements Control{
 				frontcar = backcar;
 		}
 	}
-	
+	/**
+	 * Make car stop at the light.
+	 * @param road
+	 */
 	private void CheckLight(Road road) {
 		Car car = road.get_FirstCar();
 		int lightpos = car.get_Lightpos() - 1;
@@ -108,7 +121,10 @@ final class AlterControl implements Control{
 			}
 		}
 	}
-	
+	/**
+	 * Make car go through a light.
+	 * @param startPoint
+	 */
 	private void GoThroughInter(int startPoint) {
 		
 		for(CarQueue carqueue: queue){
@@ -134,7 +150,10 @@ final class AlterControl implements Control{
 			}
 		}
 	}
-	
+	/**
+	 * Remove the car that reaches at the end of the road.
+	 * @param road
+	 */
 	private void Sink(Road road) {
 		if(road.hasCar()){
 			Car frontCar = road.get_FirstCar();
@@ -144,7 +163,9 @@ final class AlterControl implements Control{
 				road.get_FirstCar().speedUp();
 		}
 	}
-
+	/**
+	 * Adding road for this controller.
+	 */
 	public void addRoad(Road road) {
 		if (road_rank == this.road.length){
 			return;
@@ -152,7 +173,9 @@ final class AlterControl implements Control{
 		this.road[road_rank] = road;
 		road_rank++;
 	}
-
+	/**
+	 * Adding light for this controller.
+	 */
 	public void addLight(Light light) {
 		if (light_rank == this.light.length){
 			return;

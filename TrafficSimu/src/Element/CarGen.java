@@ -3,6 +3,12 @@ package Element;
 import ielement.Agent;
 import ielement.Car;
 
+/**
+ * This class will generate car based on the provided interval time. 
+ * 
+ * @author pichan vasantakitkumjorn
+ *
+ */
 final class CarGen implements Agent{
 
 	private Car_Component car_info;
@@ -11,7 +17,7 @@ final class CarGen implements Agent{
 	private final int car_pos;
 	private final int car_type;
 	private final int light_pos;
-	
+	//Constructor.
 	CarGen(int car_pos, int car_type, Road road, Car_Component car_info, int lightpos){
 		this.time_gen = car_info.getGenerateTime() * 2;
 		this.car_info = car_info;
@@ -25,7 +31,9 @@ final class CarGen implements Agent{
 		else
 			road.add_Car(new Simple_Car(car_info,car_pos));
 	}
-	
+	/**
+	 * Start generating car.
+	 */
 	public void run(int runtime) {
 		if(runtime % time_gen == 0){
 			switch(car_type){
